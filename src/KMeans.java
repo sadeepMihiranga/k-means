@@ -50,6 +50,21 @@ public class KMeans {
         }
     }
 
+    private static List<Point> findInitCentroids(int kValue) {
+
+        List<Point> centroids = new ArrayList<>();
+
+        centroids.add(new Point(2d, 10d));
+        centroids.add(new Point(5d, 8d));
+        centroids.add(new Point(1d, 2d));
+
+        if(kValue != centroids.size()) {
+            throw new IllegalArgumentException("No of centroids should be equal to the kValue");
+        }
+
+        return centroids;
+    }
+
     private static boolean isDataSetPartitioned(List<DistanceGridValue> distanceGridPrev, List<DistanceGridValue> distanceGridCurrent) {
 
         boolean isCentroidFinalized = false;
@@ -135,21 +150,6 @@ public class KMeans {
         }
 
         return new ArrayList<>(newCentroids.values());
-    }
-
-    private static List<Point> findInitCentroids(int kValue) {
-
-        List<Point> centroids = new ArrayList<>();
-
-        centroids.add(new Point(2d, 10d));
-        centroids.add(new Point(5d, 8d));
-        centroids.add(new Point(1d, 2d));
-
-        if(kValue != centroids.size()) {
-            throw new IllegalArgumentException("No of centroids should be equal to the kValue");
-        }
-
-        return centroids;
     }
 
     static Set<String> pointNames = new LinkedHashSet<>();
